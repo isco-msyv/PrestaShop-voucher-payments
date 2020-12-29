@@ -1,0 +1,97 @@
+Revolute test vouchers - Validation report
+-------
+
+Addon details
+-------------
+
+Validation date: 2020-12-29
+Addon type: Module
+Technical name: revolutetestvoucher
+Display name: Revolute test vouchers
+Author: Ismayil Musayev
+Version: 1.0.0
+Category (tab): payments_gateways
+Description: The module allows the customer to pay with predefined vouchers
+
+
+Compatibility
+-------------
+
+In file /revolutetestvoucher.php:
+ * Hook DisplayPayment is not used anymore from PrestaShop 1.7.
+
+Line	| Code
+--------| ------------------------------------------------------
+406	|     public function hookPayment($params)
+
+
+Optimizations
+-------------
+
+In file /upgrade/upgrade-1.1.0.php:
+ * Unused function parameter $module.
+
+Line	| Code
+--------| ------------------------------------------------------
+36	| function upgrade_module_1_1_0($module)
+
+
+In file /revolutetestvoucher.php:
+ * Unused variable $currency.
+
+Line	| Code
+--------| ------------------------------------------------------
+409	|         $currency = new Currency((int)$currency_id);
+
+
+Security
+-------------
+
+In file /views/templates/admin/configure.tpl:
+ * No modifier method used. This value will be cleaned automatically before being displayed.
+
+Line	| Code
+--------| ------------------------------------------------------
+45	| 			<td><a class="vocuhers_list" style="cursor: pointer">{$voucher['voucher_string']}</a></td>
+
+
+Standards
+-------------
+
+In file /controllers/front/confirmation.php:
+ * Line exceeds 120 characters; contains 155 characters
+
+Line	| Code
+--------| ------------------------------------------------------
+84	|         $this->module->validateOrder($cart_id, $payment_status, $cart->getOrderTotal(), $module_name, $message, array(), $currency_id, false, $secure_key);
+
+
+ * Line exceeds 120 characters; contains 171 characters
+
+Line	| Code
+--------| ------------------------------------------------------
+96	|             Tools::redirect('index.php?controller=order-confirmation&id_cart=' . $cart_id . '&id_module=' . $module_id . '&id_order=' . $order_id . '&key=' . $secure_key);
+
+
+In file /revolutetestvoucher.php:
+ * Line exceeds 120 characters; contains 153 characters
+
+Line	| Code
+--------| ------------------------------------------------------
+162	|         $sql = 'INSERT INTO `' . _DB_PREFIX_ . 'revolutetestvoucher` (`voucher_string`, `voucher_id_currency`, `voucher_price`, `voucher_is_full_price`) 
+
+
+ * Line exceeds 120 characters; contains 208 characters
+
+Line	| Code
+--------| ------------------------------------------------------
+163	|                 VALUES ("' . pSQL($voucher['voucher_string']) . '","' . (int)$voucher['voucher_id_currency'] . '","' . (float)$voucher['voucher_price'] . '","' . (int)$voucher['voucher_is_full_price'] . '")';
+
+
+ * Line exceeds 120 characters; contains 130 characters
+
+Line	| Code
+--------| ------------------------------------------------------
+178	|         $sql = 'SELECT * FROM `' . _DB_PREFIX_ . 'revolutetestvoucher` WHERE voucher_string like "' . pSQL($voucher_string) . '"';
+
+
